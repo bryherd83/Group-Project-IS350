@@ -1,4 +1,5 @@
 public class Growth extends Stratgey{
+
 private double baseMinGrowth;
 
 public Growth(double baseMinGrowth){
@@ -14,14 +15,14 @@ public void setBaseMinGrowth(double baseMinGrowth){
 }
 
 public String explain(Stock stock, User user){
-    return stock.getTicker() + "exceeds minimum growth thresehold of" + baseMinGrowth;
+    return stock.getTicker() + "exceeds minimum growth threshold of" + baseMinGrowth;
 }
 
 public double score(Stock stock, User user){
     if(stock.getRevenueGrowth() < baseMinGrowth){
         return 0.0;
     }
-    return stock.getRevenueGrowth();
+    return stock.getRevenueGrowth() * 100;
 }
 
 public double adjustThreshold(double base, User user)

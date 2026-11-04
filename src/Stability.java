@@ -26,9 +26,12 @@ public class Stability extends Stratgey {
         if (stock.getDividendYield() < baseMinDividend){
             return 0.0;
         }
-        return stock.getDividendYield() * 100;
+        return (stock.getDividendYield() * 100) + ((baseMaxBeta - stock.getBeta()) * 10);
     }
-    public double adjustThreshold(double base, User user){
+    public double adjustThreshold(double base, User user) {
+        if (user.getRiskProfile().equalsIgnoreCase("Stability")){
+            return base * 0.9;
+    }
         return base;
     }
 
